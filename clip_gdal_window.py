@@ -1,5 +1,5 @@
 '''
-LastEditor: Junjie Lin
+LastEditor: Guixiang
 Date: 2023-04-30 15:20:53
 LastEditTime: 2023-09-27 15:35:42
 FilePath: \预处理\clip_gdal_window.py
@@ -11,7 +11,7 @@ Created on Tue Aug 30 13:39:40 2022
 
 @author: dongzhen
 """
-####切256 注意tif和png要改
+####切256
 import os
 from osgeo import gdal, gdalnumeric, gdal_array
 import numpy as np
@@ -75,7 +75,7 @@ def clip(imagefolder, inputform, subXsize, subYsize, overlap):
                 print("begin to write:", k+1, "th subimage of", file)
                 subimage = newSaveFolder + '\\' + file.split('\\')[-1].split('.')[0] + '_' + str(k+1) + '.' + fileForm
                 #driver = gdal.GetDriverByName("GTiff")
-                #第一处修改
+                
                 driver = gdal.GetDriverByName("PNG")
                 # copy gdal dataset
                 driver.CreateCopy(subimage, 
@@ -85,8 +85,8 @@ def clip(imagefolder, inputform, subXsize, subYsize, overlap):
                                             yoff = subImagesPos[k][1]))
     
 if __name__ == '__main__':
-    imagefolder = r"D:\2023大创\test"#第二处修改
-    inputform = 'png'#第三处
+    imagefolder = r"D:\test"
+    inputform = 'png'
     subXsize = 256
     subYsize = 256
     overlap = 0
